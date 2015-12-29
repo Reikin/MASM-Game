@@ -28,6 +28,9 @@ STARTSCREEN:
 	mov	edx, OFFSET[textStr1]
 	call 	WriteString	
 	call 	Crlf
+	mov	edx, OFFSET[textStr2]
+	call 	WriteString	
+	call 	Crlf
 	mov	edx, OFFSET[entgaStr]
 	call 	WriteString
 	call 	ReadChar
@@ -144,15 +147,15 @@ L_RANK:
 	call 	WriteString
 	call 	ReadChar  
 	cmp 	al, 's'
-	jmp	INST
+	je		INST
 TES2:
 	call 	ReadChar 
 	cmp 	al, ' '
-	je	SR
+	je		RS
+RS:
+	call	showrank
 CHE2:
 	jmp	L_RANK
-SR:
-	call	showrank
 INST:
 	call	ClrScr
 	call 	Crlf

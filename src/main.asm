@@ -2,6 +2,7 @@ INCLUDE Irvine32.inc
 INCLUDE start.asm
 INCLUDE game.asm
 
+
 .data
 
 .code

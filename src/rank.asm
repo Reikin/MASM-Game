@@ -1,4 +1,4 @@
-INCLUDE Irvine32.inc
+;INCLUDE Irvine32.inc
 INCLUDE utils.asm
 
 ; Max character read into buffer string.
@@ -535,5 +535,5 @@ debug PROC
 debug ENDP
 
 ;END showRank
-END debug
+;END debug
 

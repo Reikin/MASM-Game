@@ -86,14 +86,14 @@ GAMECH:
 	call 	WriteString	
 	call 	ReadChar
 	cmp 	al, 's'
-	je	RANK
+	je	L_RANK
 CHE1:
 	jmp	GAMECH
 TES1:
 	call 	ReadChar  
 	cmp 	al, ' '
 	je	READY
-RANK:
+L_RANK:
 	call	ClrScr
 	call 	Crlf
 	call 	Crlf
@@ -146,7 +146,7 @@ RANK:
 	cmp 	al, 's'
 	jmp	INST
 CHE2:
-	jmp	RANK
+	jmp	L_RANK
 TES2:
 	call 	ReadChar 
 	cmp 	al, ' '

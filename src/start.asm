@@ -87,12 +87,12 @@ GAMECH:
 	call 	ReadChar
 	cmp 	al, 's'
 	je	L_RANK
-CHE1:
-	jmp	GAMECH
 TES1:
 	call 	ReadChar  
 	cmp 	al, ' '
 	je	READY
+CHE1:
+	jmp	GAMECH
 L_RANK:
 	call	ClrScr
 	call 	Crlf
@@ -145,12 +145,12 @@ L_RANK:
 	call 	ReadChar  
 	cmp 	al, 's'
 	jmp	INST
-CHE2:
-	jmp	L_RANK
 TES2:
 	call 	ReadChar 
 	cmp 	al, ' '
 	je	SR
+CHE2:
+	jmp	L_RANK
 SR:
 	call	showrank
 INST:
@@ -205,12 +205,12 @@ INST:
 	call 	ReadChar  
 	cmp 	al, 's'
 	je	GAMECH
-CHE3:
-	jmp	INST
 TES3:
 	call 	ReadChar 
 	cmp 	al, ' '
 	je	EX
+CHE3:
+	jmp	INST
 EX:
 	call	ClrScr
 	mov 	edx, OFFSET[exStr1]     ; rule ex

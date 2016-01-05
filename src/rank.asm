@@ -506,24 +506,24 @@ DONE:
 	ret
 showRank ENDP
 
-debug PROC
+saveToFile PROC
 	call 	ClrScr
 	mov 	edx, OFFSET rankFile
 	mov 	edi, OFFSET buffer
 	call 	Read
 	call 	bufferIntoRank
 	
-	mov 	edx, OFFSET promptPlayer
-	call 	WriteString
-	mov 	edx, OFFSET newrank.player
-	mov 	ecx, 31
-	call 	readString
-	call 	Crlf
-	mov 	edx, OFFSET promptScore
-	call 	WriteString
-	mov 	edx, OFFSET newrank.score
-	mov 	ecx, 6
-	call 	readString
+	;mov 	edx, OFFSET promptPlayer
+	;call 	WriteString
+	;mov 	edx, OFFSET newrank.player
+	;mov 	ecx, 31
+	;call 	readString
+	;call 	Crlf
+	;mov 	edx, OFFSET promptScore
+	;call 	WriteString
+	;mov 	edx, OFFSET newrank.score
+	;mov 	ecx, 6
+	;call 	readString
 
 	call 	sort
 
@@ -532,8 +532,8 @@ debug PROC
 	call	showRank
 
 	exit
-debug ENDP
+saveToFile ENDP
 
 ;END showRank
-;END debug
+;END saveToFile
 

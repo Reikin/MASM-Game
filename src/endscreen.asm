@@ -1,6 +1,6 @@
 TiTLE endscreen
 
-INCLUDE Irvine32.inc
+;INCLUDE Irvine32.inc
 
 .data
 	ggtext1 	BYTE	"        ::::::::          :::         ::::     ::::     ::::::::::",0
@@ -238,6 +238,6 @@ KS:
 	;call	GAMECH
 JS2:
 	jmp	CHE2
-	exit
+	;exit
 endscreen ENDP
-END endscreen
+;END endscreen

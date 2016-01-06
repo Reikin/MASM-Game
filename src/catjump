@@ -1,0 +1,72 @@
+.code
+catjump PROC
+
+mov ecx , 4;  cx=4
+
+jump:							;cat jump
+	call  	Clrscr
+	dec side0 
+	mov  	dl , 0                   ; X 
+	mov  	dh , side0                   ; Y
+	call    Gotoxy
+	mov 	edx,offset cat3
+	call 	writestring
+	
+	dec side0 
+	mov  	dl , 0                   ; X 
+	mov  	dh , side0                   ; Y
+	call    Gotoxy
+	mov 	edx,offset cat2
+	call 	writestring
+	
+	dec side0
+	mov  	dl , 0                   ;X
+	mov  	dh , side0                  ;Y
+	call    Gotoxy                     ; 
+	mov 	edx,offset cat1
+	call 	WriteString
+
+	
+	mov 	eax,500	; 0.5s
+	call   	delay
+	LOOP 	jump
+	call  Crlf 
+	call  Crlf 
+	
+	cmp	ecx,0		;
+	jz	downloop	;
+	
+downloop:	
+	mov ecx , 4;  cx=4
+down:							;cat down	
+	
+
+
+	call  	Clrscr
+	add  	side0 , 1
+	mov  	dl , 0                   ;X
+	mov  	dh , side0                  ;Y
+	call    Gotoxy                     ; 
+
+	mov 	edx,offset cat1
+	call 	WriteString
+
+	add	 	side0 , 1
+	mov  	dl , 0                   ; X 
+	mov  	dh , side0                   ; Y
+	call    Gotoxy
+	mov 	edx,offset cat2
+	call 	writestring
+
+	add 	side0 ,1
+	mov  	dl , 0                   ; X 
+	mov  	dh , side0                   ; Y
+	call    Gotoxy
+	mov 	edx,offset cat3
+	call 	writestring
+	mov 	eax,400	; 0.5s
+	call   	delay
+	LOOP 	down
+ret
+
+catjump ENDP

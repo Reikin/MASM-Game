@@ -75,7 +75,7 @@ myWrite PROC
 	call 	strlen
 	mov 	ecx, 36
 	sub 	ecx, eax
-	
+
 START:
 	mov 	al, 32
 	call 	WriteChar
@@ -88,14 +88,14 @@ compareString PROC
 ; ecx -> strlen
 ; esi -> str1
 ; edi -> str2
-; 
+;
 ; Return eax = 1 means greater, 0 means equals, -1 means less than.
 ; -----------------------------------------------
 L1:
 	mov 	al, [esi]
 	mov 	bl, [edi]
 	sub 	al, bl
-	
+
 	inc 	esi
 	inc 	edi
 	cmp 	al, 0
@@ -123,10 +123,10 @@ swapString PROC
 	mov		edx, 0
 L1:
 	mov 	al, [esi+edx]
-	
+
 	mov 	bl, [edi+edx]
 	mov 	[esi+edx], bl
-	
+
 	mov 	[edi+edx], al
 	inc 	edx
 	loop 	L1
@@ -155,7 +155,7 @@ sort PROC
 	mov 	esi, OFFSET newrank.score
 	mov 	edi, OFFSET rank5.score
 	call 	compareString
-	
+
 	cmp		eax, 0
 	jge		L1
 	jmp		OVER
@@ -173,7 +173,7 @@ L1:
 	mov 	esi, OFFSET rank5.score
 	mov 	edi, OFFSET rank4.score
 	call 	compareString
-	
+
 	cmp		eax, 0
 	jge		L2
 	jmp		OVER
@@ -191,7 +191,7 @@ L2:
 	mov 	esi, OFFSET rank4.score
 	mov 	edi, OFFSET rank3.score
 	call 	compareString
-	
+
 	cmp		eax, 0
 	jge		L3
 	jmp		OVER
@@ -209,7 +209,7 @@ L3:
 	mov 	esi, OFFSET rank3.score
 	mov 	edi, OFFSET rank2.score
 	call 	compareString
-	
+
 	cmp		eax, 0
 	jge		L4
 	jmp		OVER
@@ -227,7 +227,7 @@ L4:
 	mov 	esi, OFFSET rank2.score
 	mov 	edi, OFFSET rank1.score
 	call 	compareString
-	
+
 	cmp		eax, 0
 	jge		L5
 	jmp		OVER
@@ -254,14 +254,14 @@ Read PROC
 	cmp     eax, INVALID_HANDLE_VALUE
 	je      file_error
 	mov     hFile, eax
-	
+
 	mov		eax, hFile
 	mov 	edx, edi
 	mov     ecx, BUF_SIZE
 	call    ReadFromFile
 	jc      FILE_ERROR
 	;mov     bytesRead, eax
-	
+
 	mov 	eax, hFile
 	call 	CloseFile
 	ret
@@ -313,47 +313,47 @@ rankIntoBuffer PROC
 	mov 	edi, OFFSET buffer
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET rank1.score
 	mov 	edi, OFFSET buffer+30
 	mov 	ecx, 5
 	call 	moveString
-	
+
 	mov 	esi, OFFSET rank2.player
 	mov 	edi, OFFSET buffer+35
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET rank2.score
 	mov 	edi, OFFSET buffer+65
 	mov 	ecx, 5
 	call 	moveString
-	
+
 	mov 	esi, OFFSET rank3.player
 	mov 	edi, OFFSET buffer+70
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET rank3.score
 	mov 	edi, OFFSET buffer+100
 	mov 	ecx, 5
 	call 	moveString
-	
+
 	mov 	esi, OFFSET rank4.player
 	mov 	edi, OFFSET buffer+105
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET rank4.score
 	mov 	edi, OFFSET buffer+135
 	mov 	ecx, 5
 	call 	moveString
-	
+
 	mov 	esi, OFFSET rank5.player
 	mov 	edi, OFFSET buffer+140
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET rank5.score
 	mov 	edi, OFFSET buffer+170
 	mov 	ecx, 5
@@ -369,52 +369,52 @@ bufferIntoRank PROC
 	mov 	edi, OFFSET rank1.player
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET buffer+30
 	mov 	edi, OFFSET rank1.score
 	mov 	ecx, 5
 	call 	moveString
-	
+
 	mov 	esi, OFFSET buffer+35
 	mov 	edi, OFFSET rank2.player
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET buffer+65
 	mov 	edi, OFFSET rank2.score
 	mov 	ecx, 5
 	call 	moveString
-	
+
 	mov 	esi, OFFSET buffer+70
 	mov 	edi, OFFSET rank3.player
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET buffer+100
 	mov 	edi, OFFSET rank3.score
 	mov 	ecx, 5
 	call 	moveString
-	
+
 	mov 	esi, OFFSET buffer+105
 	mov 	edi, OFFSET rank4.player
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET buffer+135
 	mov 	edi, OFFSET rank4.score
 	mov 	ecx, 5
 	call 	moveString
-	
+
 	mov 	esi, OFFSET buffer+140
 	mov 	edi, OFFSET rank5.player
 	mov 	ecx, 30
 	call 	moveString
-	
+
 	mov 	esi, OFFSET buffer+170
 	mov 	edi, OFFSET rank5.score
 	mov 	ecx, 5
 	call 	moveString
-	
+
 	ret
 bufferIntoRank ENDP
 
@@ -435,24 +435,24 @@ showRank PROC
 	mov 	edx, OFFSET rankFont
 	mov 	edi, OFFSET buffer
 	call 	Read
-	
+
 	mov 	edx, OFFSET buffer
 	call 	WriteString
 	call 	Crlf
 	call 	Crlf
 	call 	Crlf
-	
+
 	mov 	eax, 32
 	mov 	ecx, BUF_SIZE
 	mov 	edx, OFFSET buffer
 	call 	cleanString
-	
+
 	mov 	edx, OFFSET rankFile
 	mov 	edi, OFFSET buffer
 	call 	Read
-	
+
 	call 	bufferIntoRank
-	
+
 	mov 	edx, OFFSET first
 	call 	WriteString
 	mov 	edx, OFFSET rank1.player
@@ -460,7 +460,7 @@ showRank PROC
 	mov 	edx, OFFSET rank1.score
 	call 	WriteString
 	call 	Crlf
-	
+
 	mov 	edx, OFFSET second
 	call 	WriteString
 	mov 	edx, OFFSET rank2.player
@@ -468,7 +468,7 @@ showRank PROC
 	mov 	edx, OFFSET rank2.score
 	call 	WriteString
 	call 	Crlf
-	
+
 	mov 	edx, OFFSET third
 	call 	WriteString
 	mov 	edx, OFFSET rank3.player
@@ -476,7 +476,7 @@ showRank PROC
 	mov 	edx, OFFSET rank3.score
 	call 	WriteString
 	call 	Crlf
-	
+
 	mov 	edx, OFFSET forth
 	call 	WriteString
 	mov 	edx, OFFSET rank4.player
@@ -484,7 +484,7 @@ showRank PROC
 	mov 	edx, OFFSET rank4.score
 	call 	WriteString
 	call 	Crlf
-	
+
 	mov 	edx, OFFSET fifth
 	call 	WriteString
 	mov 	edx, OFFSET rank5.player
@@ -495,7 +495,7 @@ showRank PROC
 	call 	Crlf
 	call 	Crlf
 	call 	Crlf
-	
+
 	mov 	edx, OFFSET promptback
 	call 	WriteString
 WAITING:
@@ -513,7 +513,7 @@ saveToFile PROC
 	mov 	edi, OFFSET buffer
 	call 	Read
 	call 	bufferIntoRank
-	
+
 	;mov 	edx, OFFSET promptPlayer
 	;call 	WriteString
 	;mov 	edx, OFFSET newrank.player
@@ -546,7 +546,7 @@ writeScore PROC
 	mov 	eax, newScore
 	mov 	edi, OFFSET newrank.score
 	xor 	edx, edx
-	
+
 NEXT:
 	mov 	bx, 10000
 	div 	bx
@@ -554,61 +554,61 @@ NEXT:
 	mov 	[edi], al
 	sub     al, 48
 	inc 	edi
-	
+
 	;call 	WriteDec
 	;call 	Crlf
 	mov 	ax, dx
 	xor 	edx, edx
-	
+
 	mov 	bx, 1000
 	div 	bx
 	add 	al, 48
 	mov 	[edi], al
 	sub     al, 48
 	inc 	edi
-	
+
 	;call 	WriteDec
 	;call 	Crlf
 	mov 	ax, dx
 	xor 	edx, edx
-	
+
 	mov 	bx, 100
 	div 	bx
 	add 	al, 48
 	mov 	[edi], al
 	sub     al, 48
 	inc 	edi
-	
+
 	;call 	WriteDec
 	;call 	Crlf
 	mov 	ax, dx
 	xor 	edx, edx
-	
+
 	mov 	bx, 10
 	div     bx
 	add 	al, 48
 	mov 	[edi], al
 	sub     al, 48
 	inc 	edi
-	
+
 	;call 	WriteDec
 	;call 	Crlf
 	mov 	ax, dx
 	xor 	edx, edx
-	
+
 	mov 	bx, 1
 	div 	bx
 	add 	al, 48
 	mov 	[edi], al
 	sub     al, 48
 	inc 	edi
-	
+
 	;call 	WriteDec
 	;call 	Crlf
-	
+
 	mov 	eax, 0
 	mov 	[edi], eax
-	
+
 	ret
 writeScore ENDP
 

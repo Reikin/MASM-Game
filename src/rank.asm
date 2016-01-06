@@ -30,6 +30,7 @@ rank ENDS
 	third		BYTE "                 3. ", 0
 	forth 		BYTE "                 4. ", 0
 	fifth		BYTE "                 5. ", 0
+	newScore    DWORD ?
 
 .code
 
@@ -536,4 +537,87 @@ saveToFile ENDP
 
 ;END showRank
 ;END saveToFile
+;END debug
 
+; --------------------------------------------------
+writeScore PROC
+;	this function will write eax into newrank.score
+; --------------------------------------------------
+	mov 	eax, newScore
+	mov 	edi, OFFSET newrank.score
+	xor 	edx, edx
+	
+NEXT:
+	mov 	bx, 10000
+	div 	bx
+	add 	al, 48
+	mov 	[edi], al
+	sub     al, 48
+	inc 	edi
+	
+	;call 	WriteDec
+	;call 	Crlf
+	mov 	ax, dx
+	xor 	edx, edx
+	
+	mov 	bx, 1000
+	div 	bx
+	add 	al, 48
+	mov 	[edi], al
+	sub     al, 48
+	inc 	edi
+	
+	;call 	WriteDec
+	;call 	Crlf
+	mov 	ax, dx
+	xor 	edx, edx
+	
+	mov 	bx, 100
+	div 	bx
+	add 	al, 48
+	mov 	[edi], al
+	sub     al, 48
+	inc 	edi
+	
+	;call 	WriteDec
+	;call 	Crlf
+	mov 	ax, dx
+	xor 	edx, edx
+	
+	mov 	bx, 10
+	div     bx
+	add 	al, 48
+	mov 	[edi], al
+	sub     al, 48
+	inc 	edi
+	
+	;call 	WriteDec
+	;call 	Crlf
+	mov 	ax, dx
+	xor 	edx, edx
+	
+	mov 	bx, 1
+	div 	bx
+	add 	al, 48
+	mov 	[edi], al
+	sub     al, 48
+	inc 	edi
+	
+	;call 	WriteDec
+	;call 	Crlf
+	
+	mov 	eax, 0
+	mov 	[edi], eax
+	
+	ret
+writeScore ENDP
+
+;debug PROC
+;	mov 	newScore, 32321
+;	call	writeScore
+;	mov 	edx, OFFSET newrank.score
+;	call 	WriteString
+;	exit
+;debug ENDP
+
+;END debug
